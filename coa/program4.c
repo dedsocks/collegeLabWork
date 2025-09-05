@@ -48,6 +48,13 @@ void subtractBinaryNumbers(int* minuend, int* subtraend){
     addBinaryNumbers(minuend, subtraend);
 }
 
+void shiftRight(int* binaryNumber){
+    int i;
+    for(i = NUMBER_OF_BITS-1; i > 0; i--){
+        binaryNumber[i] = binaryNumber[i-1];
+    }
+}
+
 void displayBinaryNumber(int* binaryNumber, int numberOfBits){
     int i;
     printf("\nResult: ");
