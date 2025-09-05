@@ -12,7 +12,7 @@ void inputBinaryNumber(int* binaryNumber, int serialNumber){
 
 void addBinaryNumbers(int* binaryNumber1, int* binaryNumber2){
     int i, carry = 0;
-    int finalNumber[NUMBER_OF_BITS] = binaryNumber1;
+    int* finalNumber = binaryNumber1;
 
     for(i = NUMBER_OF_BITS-1; i >= 0; i--){
         finalNumber[i] = binaryNumber1[i] + binaryNumber2[i] + carry;
@@ -43,7 +43,9 @@ void find2sComplement(int* binaryNumber){
 }
 
 void subtractBinaryNumbers(int* minuend, int* subtraend){
+    find2sComplement(subtraend);
 
+    addBinaryNumbers(minuend, subtraend);
 }
 
 void displayBinaryNumber(int* binaryNumber, int numberOfBits){
@@ -62,6 +64,5 @@ int main(){
     inputBinaryNumber(multiplicand, serialNumber++);
     inputBinaryNumber(multiplier, serialNumber++);
 
-    
     return 0;
 }
