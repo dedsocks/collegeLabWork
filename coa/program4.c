@@ -10,6 +10,15 @@ void inputBinaryNumber(int* binaryNumber, int serialNumber){
     }
 }
 
+void displayBinaryNumber(int* binaryNumber, int numberOfBits){
+    int i;
+    printf("\nResult: ");
+    for(i = 0; i < numberOfBits; i++){
+        printf("%d ", binaryNumber[i]);
+    }
+    printf("\n\n");
+}
+
 void addBinaryNumbers(int* binaryNumber1, int* binaryNumber2){
     int i, carry = 0;
     int* finalNumber = binaryNumber1;
@@ -39,10 +48,17 @@ void find2sComplement(int* binaryNumber){
     addBinaryNumbers(binaryNumber, addToLsb);
 }
 
-void subtractBinaryNumbers(int* minuend, int* subtraend){
-    find2sComplement(subtraend);
+void copyArray(int* arrayCopy, int* originalArray){
+    for(int i = 0; i < NUMBER_OF_BITS; i++){
+        arrayCopy[i] = originalArray[i];
+    }
+}
 
-    addBinaryNumbers(minuend, subtraend);
+void subtractBinaryNumbers(int* minuend, int* subtraend){
+    int subtraendCopy[NUMBER_OF_BITS];
+    copyArray(subtraendCopy, subtraend);
+    find2sComplement(subtraendCopy);
+    addBinaryNumbers(minuend, subtraendCopy);
 }
 
 void shiftRight(int* binaryNumber){
@@ -52,21 +68,34 @@ void shiftRight(int* binaryNumber){
     }
 }
 
-void multiplyNumbers(int* multiplicand, int* multiplier, int* finalNumber){
+void multiplyBinaryNumbers(int* multiplicand, int* multiplier, int* finalNumber){
     // q1Bit -> Q₋₁ bit from booths algorithm
     int counter = NUMBER_OF_BITS, q1Bit = 0, i; 
     int accumulator[NUMBER_OF_BITS] = {0};
+    int indexOfLastElement = NUMBER_OF_BITS - 1;
+    int indexOfFinalNumber = NUMBER_OF_BITS * 2 - 1;
 
+    while(counter != 0){
+        if(multiplier[indexOfLastElement] == q1Bit);
+        else if((multiplier[indexOfLastElement] == 0) && q1Bit == 1){
+            addBinaryNumbers(accumulator, multiplicand);
+        }
+        else {
+            subtractBinaryNumbers(accumulator, multiplicand);
+        }
+        q1Bit = multiplier[indexOfLastElement];
+        shiftRight(multiplier);
+        multiplier[0] = accumulator[indexOfLastElement];
+        shiftRight(accumulator);
 
-}
-
-void displayBinaryNumber(int* binaryNumber, int numberOfBits){
-    int i;
-    printf("\nResult: ");
-    for(i = 0; i < numberOfBits; i++){
-        printf("%d ", binaryNumber[i]);
+        counter--;
     }
-    printf("\n\n");
+    for(i = indexOfLastElement; i >= 0; i--){
+        finalNumber[indexOfFinalNumber--] = multiplier[i];
+    }
+    for(i = indexOfLastElement; i >= 0; i--){
+        finalNumber[indexOfFinalNumber--] = accumulator[i];
+    }
 }
 
 int main(){
@@ -76,5 +105,7 @@ int main(){
     inputBinaryNumber(multiplicand, serialNumber++);
     inputBinaryNumber(multiplier, serialNumber++);
 
+    multiplyBinaryNumbers(multiplicand,multiplier,finalNumber);
+    displayBinaryNumber(finalNumber,NUMBER_OF_BITS*2);
     return 0;
 }
