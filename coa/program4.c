@@ -10,6 +10,18 @@ void inputBinaryNumber(int* binaryNumber, int serialNumber){
     }
 }
 
+void addBinaryNumbers(int* binaryNumber1, int* binaryNumber2, int* finalNumber){
+    int i, carry = 0;
+    for(i = NUMBER_OF_BITS-1; i >= 0; i--){
+        finalNumber[i] = binaryNumber1[i] + binaryNumber2[i] + carry;
+        if(finalNumber[i] >= 2){
+            carry = 1;
+        }
+        else carry = 0;
+        finalNumber[i] %= 2;
+    }
+}
+
 void displayBinaryNumber(int* binaryNumber, int numberOfBits){
     int i;
     printf("\nResult: ");
@@ -26,5 +38,6 @@ int main(){
     inputBinaryNumber(multiplicand, serialNumber++);
     inputBinaryNumber(multiplier, serialNumber++);
 
+    
     return 0;
 }
