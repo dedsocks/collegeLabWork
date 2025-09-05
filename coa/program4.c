@@ -26,10 +26,7 @@ void addBinaryNumbers(int* binaryNumber1, int* binaryNumber2){
 
 void find1sComplement(int* binaryNumber){
     for(int i = 0; i < NUMBER_OF_BITS; i++){
-        if(binaryNumber[i] == 0){
-            binaryNumber[i] = 1;
-        }
-        else binaryNumber[i] = 0;
+        binaryNumber[i] = !binaryNumber[i];
     }
 }
 
@@ -53,6 +50,14 @@ void shiftRight(int* binaryNumber){
     for(i = NUMBER_OF_BITS-1; i > 0; i--){
         binaryNumber[i] = binaryNumber[i-1];
     }
+}
+
+void multiplyNumbers(int* multiplicand, int* multiplier, int* finalNumber){
+    // q1Bit -> Q₋₁ bit from booths algorithm
+    int counter = NUMBER_OF_BITS, q1Bit = 0, i; 
+    int accumulator[NUMBER_OF_BITS] = {0};
+
+
 }
 
 void displayBinaryNumber(int* binaryNumber, int numberOfBits){
