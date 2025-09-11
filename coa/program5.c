@@ -2,9 +2,9 @@
 #include<stdio.h>
 #define  NUMBER_OF_BITS 4
 
-void inputBinaryNumber(int* binaryNumber, int serialNumber){
+void inputBinaryNumber(int* binaryNumber){
     int i;
-    printf("Enter binary number %d (%d bits signed) : ",serialNumber,NUMBER_OF_BITS);
+    printf("Enter binary number (%d bits signed) : ",NUMBER_OF_BITS);
     for(i = 0; i < NUMBER_OF_BITS; i++){
         scanf("%d", &binaryNumber[i]);
     }
@@ -77,7 +77,6 @@ void divideBinaryNumbers(int* divisor, int* divident){
 	while(counter != 0){
 		shiftLeft(accumulator);
 		accumulator[lastBitIndex] = divident[0];
-        displayBinaryNumber(accumulator, NUMBER_OF_BITS);
 		shiftLeft(divident);
 		subtractBinaryNumbers(accumulator, divisor);
 
@@ -88,8 +87,7 @@ void divideBinaryNumbers(int* divisor, int* divident){
 		else{
 			divident[lastBitIndex] = 1;
 		}
-        displayBinaryNumber(accumulator, NUMBER_OF_BITS);
-        displayBinaryNumber(divident, NUMBER_OF_BITS);
+        
 		counter--;	
 	}
 
@@ -101,14 +99,16 @@ void divideBinaryNumbers(int* divisor, int* divident){
 }
 
 int main(){
-    int serialNumber = 1;
     int divisor[NUMBER_OF_BITS], divident[NUMBER_OF_BITS];
     
-	printf("===RESTORING DIVISION ALGORITHM===\n\nDivident/Divisor");
+	printf("===RESTORING DIVISION ALGORITHM===\n\nDivident/Divisor\n\n");
 
-    inputBinaryNumber(divisor, serialNumber++);
-    inputBinaryNumber(divident, serialNumber++);
-
+    printf("===DIVIDENT===:\n");
+    inputBinaryNumber(divident);
+    printf("===DIVISOR===:\n");
+    inputBinaryNumber(divisor);
+    
+    //NOTE this function is also displaying the final result
     divideBinaryNumbers(divisor, divident);
 
     return 0;
