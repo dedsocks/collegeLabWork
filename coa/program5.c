@@ -69,16 +69,48 @@ void shiftLeft(int* binaryNumber){
     binaryNumber[NUMBER_OF_BITS - 1] = 0;
 }
 
+void divideBinaryNumbers(int* divisor, int* divident){
+	int accumulator[NUMBER_OF_BITS] = {0};
+	int counter = NUMBER_OF_BITS;
+	int lastBitIndex = NUMBER_OF_BITS - 1;
+
+	while(counter != 0){
+		shiftLeft(accumulator);
+		accumulator[lastBitIndex] = divident[0];
+        displayBinaryNumber(accumulator, NUMBER_OF_BITS);
+		shiftLeft(divident);
+		subtractBinaryNumbers(accumulator, divisor);
+
+		if(accumulator[0] == 1){
+			divident[lastBitIndex] = 0;
+			addBinaryNumbers(accumulator, divisor);
+		}
+		else{
+			divident[lastBitIndex] = 1;
+		}
+        displayBinaryNumber(accumulator, NUMBER_OF_BITS);
+        displayBinaryNumber(divident, NUMBER_OF_BITS);
+		counter--;	
+	}
+
+	printf("===REMAINDER===\n");
+	displayBinaryNumber(accumulator, NUMBER_OF_BITS);
+
+	printf("===QUOTIENT===\n");
+	displayBinaryNumber(divident, NUMBER_OF_BITS);
+}
 
 int main(){
     int serialNumber = 1;
     int divisor[NUMBER_OF_BITS], divident[NUMBER_OF_BITS];
     
-	printf("===RESTORING DIVISION ALGORITHM===\n\n");
+	printf("===RESTORING DIVISION ALGORITHM===\n\nDivident/Divisor");
 
     inputBinaryNumber(divisor, serialNumber++);
     inputBinaryNumber(divident, serialNumber++);
-    
+
+    divideBinaryNumbers(divisor, divident);
+
     return 0;
 }
 
