@@ -1,0 +1,40 @@
+/* Box Model Example */
+.box-model {
+    width: 200px;
+    padding: 20px;
+    border: 2px solid black;
+    margin: 15px;
+    background-color: lightblue;
+}
+
+/* Flexbox Example */
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.flex-box {
+    width: 100px;
+    height: 100px;
+    background-color: lightgreen;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* Vertical Flexbox Example */
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffeeba;
+}
