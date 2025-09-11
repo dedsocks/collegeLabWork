@@ -91,7 +91,7 @@ void divideBinaryNumbers(int* divisor, int* divident){
 		counter--;	
 	}
 
-	printf("===REMAINDER===\n");
+	printf("\n\n===REMAINDER===\n");
 	displayBinaryNumber(accumulator, NUMBER_OF_BITS);
 
 	printf("===QUOTIENT===\n");
