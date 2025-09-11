@@ -61,6 +61,15 @@ void subtractBinaryNumbers(int* minuend, int* subtraend){
     addBinaryNumbers(minuend, subtraendCopy);
 }
 
+void shiftLeft(int* binaryNumber){
+	int i;
+    for(i = 0; i < NUMBER_OF_BITS - 1; i++){
+        binaryNumber[i] = binaryNumber[i + 1];
+    }
+    binaryNumber[NUMBER_OF_BITS - 1] = 0;
+}
+
+
 int main(){
     int serialNumber = 1;
     int divisor[NUMBER_OF_BITS], divident[NUMBER_OF_BITS];
@@ -69,10 +78,7 @@ int main(){
 
     inputBinaryNumber(divisor, serialNumber++);
     inputBinaryNumber(divident, serialNumber++);
-
-    divideBinaryNumbers(divisor,divident);
-
-	getch();
+    
     return 0;
 }
 
