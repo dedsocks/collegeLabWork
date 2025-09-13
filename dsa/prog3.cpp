@@ -103,7 +103,22 @@ public:
 			
 	}
 
+	void reverseList(){
+		Node* previousNode = head;
+		Node* currentNode = previousNode->next;
+		Node* nextNode = currentNode->next;
 
+		while(nextNode->next != NULL){
+			currentNode->next = previousNode;
+			previousNode = currentNode;
+			currentNode = nextNode;
+			nextNode = nextNode->next;
+		}
+		nextNode->next = currentNode;
+		currentNode->next = previousNode;
+		head->next = NULL;
+		head = nextNode;
+	}
 };
 
 void displayMainMenu(){
@@ -158,6 +173,9 @@ int main(){
 			}
 			break;
 		case 7:
+			cout << "New reversed list is : " << endl;
+			list.reverseList();
+			list.displayList();
 			break;
 		case 8:
 			cout << "Exiting from program ...";
