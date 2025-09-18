@@ -39,89 +39,43 @@ public:
 		cout << "Element " << value << " Added at Beginning"<<endl;
 	}
 
-	/*void addAtEnd(int value){
-		Node<T>* temp;
-		temp = head;
-		Node<T>* newNode = new Node<T>(value);
-		newNode->next = NULL;
-
-		while(temp->next != NULL){
-			temp = temp->next;
-		}
-		temp->next = newNode;
-		cout << "Element " << value << " Added at End"<<endl;
-	}
-
-	void displayList(){
-		if(!(checkIfListEmpty())){
-			Node* temp;
-			temp = head;
-
-			cout << temp->data;
-			while(temp->next != NULL){
-				temp = temp->next;
-				cout << " -> " << temp->data; 
-			}
-		}
-	}
-
-	void deleteAtBeginning(){
-		if(!(checkIfListEmpty())){
-			Node* temp = head;
-			head = head->next;
-			cout << temp->data << " has been deleted from the list";
-			delete temp;
-		}
-	}
-
-	void deleteAtEnd(){
-		if(!(checkIfListEmpty())){
-			Node* temp1 = head;
-			Node* temp2 = head;
-			while(temp1->next != NULL){
-				temp2 = temp1;
-				temp1 = temp1->next;
-			}
-			temp2->next = NULL;
-			cout << temp1->data << " has been deleted from the list";
-			delete temp1;		
-		}
-	}
-
-	void searchByKey(int key){
-			Node* temp = head;
-			int counter = 0;
-			int elementFound = 0;
-
-			while(temp->next != NULL){
-				if(temp->data == key){
-					cout << "Element found at position " << counter + 1;
-					elementFound = 1;
-					break;
-				}
-				counter++;
-				temp = temp->next;
-			}
-			if(!elementFound){
-				cout << "Element is not present in the list" << endl;
-			}
-			
-	}
-
-	void reverseList(){
-		Node* previousNode = head;
-		Node* currentNode = previousNode->next;
-		Node* nextNode = currentNode->next;
-
-		while(nextNode->next != NULL){
-			currentNode->next = previousNode;
-			previousNode = currentNode;
-			currentNode = nextNode;
-			nextNode = nextNode->next;
-		}
-		nextNode->next = currentNode;
-		currentNode->next = previousNode;
-		head->next = NULL;
-		head = nextNode;
-	}*/
 };
+
+
+void displayMainMenu(){
+	cout << "\n\n====================== LINKED LIST OPERATIONS ===========================\n\n";
+	cout << "1.ADD AT BEGINNING" << endl;
+	cout << "2.ADD AT END" << endl;
+	cout << "3.DELETE AT BEGINNING" << endl;
+	cout << "4.DELETE AT END" << endl;
+	cout << "5.DISPLAY LIST" << endl;
+	cout << "6.SEARCH BASED ON KEY" << endl;
+	cout << "7.REVERSE" << endl;
+	cout << "8.EXIT PROGRAM";
+	cout << "\n\n=========================================================================\n";
+	cout << "Enter your choice : ";
+}
+
+int main(){
+	linkedList<int> list;
+	int choice;
+	int userInput;
+	
+	do{
+		displayMainMenu();
+		cin >> choice;
+
+		switch(choice){
+		case 1:
+			cout << "Enter element to add at beginning : ";
+			cin >> userInput;
+			list.addAtBeginning(userInput);
+			break;
+		
+		default:
+			cout << "Entered wrong choice\n\n";
+		}
+	}while(choice != 8);
+
+	return 0;
+}
