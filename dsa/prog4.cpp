@@ -55,6 +55,19 @@ public:
 		cout << "Element " << value << " Added at Beginning"<<endl;
 	}
 
+	void addAtEnd(int value){
+		Node<T>* temp;
+		temp = head;
+		Node<T>* newNode = new Node<T>(value);
+
+		while(temp->next != NULL){
+			temp = temp->next;
+		}
+		temp->next = newNode;
+		newNode->previos = temp;
+		cout << "Element " << value << " Added at End"<<endl;
+	}
+
 };
 
 
@@ -86,6 +99,11 @@ int main(){
 			cout << "Enter element to add at beginning : ";
 			cin >> userInput;
 			list.addAtBeginning(userInput);
+			break;
+		case 2:
+			cout << "Enter element to the end : ";
+			cin >> userInput;
+			list.addAtEnd(userInput);
 			break;
 		case 5:
 			cout << "Current list:\n";
