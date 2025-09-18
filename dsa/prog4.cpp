@@ -31,10 +31,26 @@ public:
 	else return 0;
 	}
 
+	void displayList(){
+		if(!(checkIfListEmpty())){
+			Node<T>* temp;
+			temp = head;
+
+			cout << temp->data;
+			while(temp->next != NULL){
+				temp = temp->next;
+				cout << " -> " << temp->data; 
+			}
+		}
+	}
+
 	void addAtBeginning(int value){
 		Node<T>* newNode = new Node<T>(value);
 		newNode->next = head;
 		newNode->previos = NULL;
+		if(head != NULL){
+			head->previos = newNode;
+		}
 		head = newNode;
 		cout << "Element " << value << " Added at Beginning"<<endl;
 	}
@@ -71,7 +87,10 @@ int main(){
 			cin >> userInput;
 			list.addAtBeginning(userInput);
 			break;
-		
+		case 5:
+			cout << "Current list:\n";
+			list.displayList();
+			break;
 		default:
 			cout << "Entered wrong choice\n\n";
 		}
