@@ -71,7 +71,9 @@ void shiftLeft(int* binaryNumber){
     binaryNumber[NUMBER_OF_BITS - 1] = 0;
 }
 
-
+void divideBinaryNumbers(int* divident, int* divisor){
+    
+}
 
 int main(){
     int divisor[NUMBER_OF_BITS], divident[NUMBER_OF_BITS];
