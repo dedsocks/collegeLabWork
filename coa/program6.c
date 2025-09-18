@@ -10,6 +10,16 @@ void inputBinaryNumber(int* binaryNumber){
     }
 }
 
+void displayBinaryNumber(int* binaryNumber, int numberOfBits){
+    int i;
+    printf("\nResult: ");
+    for(i = 0; i < numberOfBits; i++){
+        printf("%d ", binaryNumber[i]);
+    }
+    printf("\n\n");
+}
+
+
 void addBinaryNumbers(int* binaryNumber1, int* binaryNumber2){
     int i, carry = 0;
     int* finalNumber = binaryNumber1;
@@ -60,6 +70,7 @@ void shiftLeft(int* binaryNumber){
     }
     binaryNumber[NUMBER_OF_BITS - 1] = 0;
 }
+
 
 
 int main(){
