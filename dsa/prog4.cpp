@@ -60,12 +60,14 @@ public:
 		temp = head;
 		Node<T>* newNode = new Node<T>(value);
 
-		while(temp->next != NULL){
-			temp = temp->next;
+		if(head != NULL){
+				while(temp->next != NULL){
+				temp = temp->next;
+			}
+			temp->next = newNode;
+			newNode->previos = temp;
+			cout << "Element " << value << " Added at End"<<endl;
 		}
-		temp->next = newNode;
-		newNode->previos = temp;
-		cout << "Element " << value << " Added at End"<<endl;
 	}
 
 };
