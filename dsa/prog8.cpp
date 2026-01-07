@@ -37,6 +37,39 @@ vector<T> bubbleSort(vector<T> &arr){
     return sortedArr;
 }
 
+template<typename T>
+vector<T> insertionSort(vector<T> &arr){
+    vector<T> sortedArr = arr;
+    for(int i = 0; i < sortedArr.size(); i++){
+        int temp = 0;
+        for(int j = 0; j < i; j++){
+            if(sortedArr[i] < sortedArr[j] || temp != 0){
+                flag = 1;
+                sortedArr[j+1] = sortedArr[j];
+            }
+        }
+    }
+    return sortedArr;
+}
+
+template<typename T>
+vector<T> selectionSort(vector<T> &arr){
+    vector<T> sortedArr = arr;
+    int smallest_index;
+    for(int i = 0; i < arr.size() - 1; i++){
+        smallest_index = i;
+        for(int j = i+1; j < arr.size(); j++ ){
+            if(sortedArr[j] < sortedArr[smallest_index]){
+                smallest_index = j;
+            }
+        }
+        if(smallest_index != i){
+            swap(sortedArr[i],sortedArr[smallest_index]);
+        }
+    }
+    return sortedArr;
+}
+
 void displayMenu(){
     cout << "\nSORTING OPTIONS:\n";
     cout << "1.insertion sort\n";
@@ -49,7 +82,7 @@ void displayMenu(){
 int main(){
     vector<int> arr;
     vector<int> sortedArr;
-    int choice;
+    int choice = 0;
 
     do{
         displayMenu();
@@ -60,14 +93,16 @@ int main(){
 
         switch(choice){
             case 1:
-                cout << "bon";
+                sortedArr = insertionSort(arr);
+                display(sortedArr);
                 break;
             case 2:
                 sortedArr = bubbleSort(arr);
                 display(sortedArr);
                 break;
             case 3:
-                cout << "bim";
+                sortedArr = selectionSort(arr);
+                display(sortedArr);
                 break;
             default:
                 break;
