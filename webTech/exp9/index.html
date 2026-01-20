@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXP9</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="buttonContainer" class="division">
+        <button id="Btn1">onclick</button>
+        <button id="Btn2">onload</button>
+    </div>
+
+    <form id="myForm" class="division">
+        <input type="text" name="resetText" id="resetText" placeholder="Enter something here">
+        <div id="btnBox">
+            <button id="Btn3" type="reset">reset</button>
+            <button id="Btn4" type="submit">onsubmit</button>
+        </div>
+    </form>
+
+    <div id="textContainer" class="division">
+        <div id="changeDiv">
+            <label for="textBox">Change text for surprise:</label><br>
+            <input type="text" id="textBox">
+        </div>
+        
+        <div id="selectDiv">
+            <label for="selectInput">Select text for surprise:</label><br>
+            <input type="text" id="selectInput" value="Select me!">
+        </div>
+        
+        <div id="focusDiv">
+            <label for="focusInput">Focus / Blur me:</label><br>
+            <input type="text" id="focusInput" placeholder="Click here...">
+        </div>
+    </div>
+
+    <div id="mouseContainer" class="division">
+        <button id="Mouse1">Mouse Over</button>
+        <button id="Mouse2">Mouse Out</button>
+        <button id="Mouse3">Mouse Move</button>
+    </div>
+
+    <div id="keyboardEventsContainer" class="division">
+        <div id="keyboard1" class="dimensions">key down :</div>
+        <div id="keyboard2" class="dimensions">key up :</div>
+        <div id="keyboard3" class="dimensions">key press :</div>
+    </div>
+
+    <div id="grandparent" class="division">
+        <div id="parent">
+            <button id="child">Click me (Event Bubbling)</button>
+        </div>
+    </div>
+
+</body>
+</html>
